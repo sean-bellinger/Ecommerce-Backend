@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class cartitem implements Serializable{
+public class CartItem implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String session_id;
+    @Column(nullable = false, name = "session_id")
+    private Long sessionId;
 
-    @Column(nullable = false)
-    private String product_id;
+    @Column(nullable = false, name = "product_id")
+    private Long productId;
 
     @Column(nullable = false)
     private String quantity;

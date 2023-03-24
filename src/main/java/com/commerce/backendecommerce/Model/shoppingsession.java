@@ -12,22 +12,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class shoppingsession implements Serializable{
+public class ShoppingSession implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String user_id;
+    @Column(nullable = false, unique = true, name = "user_id")
+    private Long userId;
 
     @Column(nullable = false)
     private String total;
 
     @Column(nullable = false)
-    private String created_at;
+    private String createdat;
 
-    @OneToMany(/*mappedBy = "postId",*/ cascade = CascadeType.ALL, fetch =
-            FetchType.EAGER)
-    @JoinColumn(name = "session_id", referencedColumnName = "id")
-    private List<cartitem> cartitems;
+    @OneToMany(cascade = CascadeType.ALL, fetch =FetchType.LAZY)
+    @JoinColumn(name = "sessionid", referencedColumnName = "id")
+    private List<CartItem> cartitems;
 }

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class product implements Serializable{
+public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,8 +29,7 @@ public class product implements Serializable{
     @Column(nullable = false)
     private String createdat;
 
-    @OneToMany(/*mappedBy = "postId",*/ cascade = CascadeType.ALL, fetch =
-            FetchType.EAGER)
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private List<cartitem> cartitems;
+    @OneToMany(cascade = CascadeType.ALL, fetch =FetchType.LAZY)
+    @JoinColumn(name = "productid", referencedColumnName = "id")
+    private List<CartItem> cartitems;
 }
